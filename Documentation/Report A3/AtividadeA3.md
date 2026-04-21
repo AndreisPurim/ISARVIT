@@ -1,5 +1,5 @@
 # Avaliação A3
-**MC426** Report on 21/05/2023
+**ISARVIT** Report on 21/05/2023
 
  1. [Elicitação de Requisitos](#1-elicitação-de-requisitos)
 	 1. [Brainstorming](#11-brainstorming-e-cen%C3%A1rios-de-uso)
@@ -162,21 +162,21 @@ Após as entrevistas, fizemos a seguinte lista exaustida de requisitos funcionai
 
 Dada a elicitação de requisitos, imaginamos as seguintes histórias e épicos de usuários e suas seguintes histórias. As histórias de cada um estão linkadas na issue de cada épico:
 
-- **[Epic 1:](https://github.com/AndreisPurim/MC426/issues/49)** As a doctor, I want to be capable of registering myself in the application, not only my personal information but also other information that might be relevant to creating a medical report (such as the clinic I work on). I also want to be capable of editing or deleting said information
-- **[Epic 2:](https://github.com/AndreisPurim/MC426/issues/53)** As a doctor, I want to create and administer online forms within the web app, allowing me to efficiently manage the collection and organization of patient records for other doctors
-- **[Epic 3:](https://github.com/AndreisPurim/MC426/issues/57)** As a doctor, I want to be capable of reading a patient's information from his QR Code (thus recreating any information he might have inputted), or adding information about a patient in a forms and generating a pre-written medical report to be given to the patient.
+- **[Epic 1:](https://github.com/AndreisPurim/ISARVIT/issues/49)** As a doctor, I want to be capable of registering myself in the application, not only my personal information but also other information that might be relevant to creating a medical report (such as the clinic I work on). I also want to be capable of editing or deleting said information
+- **[Epic 2:](https://github.com/AndreisPurim/ISARVIT/issues/53)** As a doctor, I want to create and administer online forms within the web app, allowing me to efficiently manage the collection and organization of patient records for other doctors
+- **[Epic 3:](https://github.com/AndreisPurim/ISARVIT/issues/57)** As a doctor, I want to be capable of reading a patient's information from his QR Code (thus recreating any information he might have inputted), or adding information about a patient in a forms and generating a pre-written medical report to be given to the patient.
 
 
 Épicos e histórias antigas (descartadas):
--  ~~**EPIC 1:** As a doctor, I want to access de web app so that I can input all my infos [#41](https://github.com/AndreisPurim/MC426/issues/41)~~
-	-   ~~As a doctor, I want to input my medical information during my initial use of the web app, so my credentials and relevant details are stored for future logins and identification purposes.[#42](https://github.com/AndreisPurim/MC426/issues/42)~~
-	-   ~~As a doctor, I want to visualize my medical information, so I can check and edit those informations [#43](https://github.com/AndreisPurim/MC426/issues/43)~~
--  ~~**EPIC 2:** As a doctor, I want to create a forms, so I can send them to my patients  [#38](https://github.com/AndreisPurim/MC426/issues/38):~~
-	-   ~~As a doctor, I want to input my patients' information in online formularies, including specific details for different computer radiography (CR) exams, so I can generate accurate and tailored QR Codes representing computer radiography for each patient. [#44](https://github.com/AndreisPurim/MC426/issues/44)~~
-	-   ~~As an admin medical professional, I want to acess the forms answers to compare them [#40](https://github.com/AndreisPurim/MC426/issues/40)~~
-	-  ~~As a medical admin professional I want to browse existent forms to reuse them or to know which forms are there [#39](https://github.com/AndreisPurim/MC426/issues/39)~~
+-  ~~**EPIC 1:** As a doctor, I want to access de web app so that I can input all my infos [#41](https://github.com/AndreisPurim/ISARVIT/issues/41)~~
+	-   ~~As a doctor, I want to input my medical information during my initial use of the web app, so my credentials and relevant details are stored for future logins and identification purposes.[#42](https://github.com/AndreisPurim/ISARVIT/issues/42)~~
+	-   ~~As a doctor, I want to visualize my medical information, so I can check and edit those informations [#43](https://github.com/AndreisPurim/ISARVIT/issues/43)~~
+-  ~~**EPIC 2:** As a doctor, I want to create a forms, so I can send them to my patients  [#38](https://github.com/AndreisPurim/ISARVIT/issues/38):~~
+	-   ~~As a doctor, I want to input my patients' information in online formularies, including specific details for different computer radiography (CR) exams, so I can generate accurate and tailored QR Codes representing computer radiography for each patient. [#44](https://github.com/AndreisPurim/ISARVIT/issues/44)~~
+	-   ~~As an admin medical professional, I want to acess the forms answers to compare them [#40](https://github.com/AndreisPurim/ISARVIT/issues/40)~~
+	-  ~~As a medical admin professional I want to browse existent forms to reuse them or to know which forms are there [#39](https://github.com/AndreisPurim/ISARVIT/issues/39)~~
 
--  ~~**EPIC 3:** As an admin medical professional, I want to create customizable models for different CR exams within the web app, enabling radiologists to select the appropriate formulary based on the specific exam requirements and ensure standardized data collection. [#32](https://github.com/AndreisPurim/MC426/issues/32)~~
-	- ~~As an admin i want to send the forms, so the doctor can use it [#35](https://github.com/AndreisPurim/MC426/issues/35)~~
-	- ~~As an admin i want to have predefined fields models, so the doctor can use standardize data [#36](https://github.com/AndreisPurim/MC426/issues/36)~~
-	- ~~As a radiologist, I want a dedicated page in the web app where I can easily access and view the patient forms, providing a centralized location for managing and reviewing the required information. [#45](https://github.com/AndreisPurim/MC426/issues/45)~~
+-  ~~**EPIC 3:** As an admin medical professional, I want to create customizable models for different CR exams within the web app, enabling radiologists to select the appropriate formulary based on the specific exam requirements and ensure standardized data collection. [#32](https://github.com/AndreisPurim/ISARVIT/issues/32)~~
+	- ~~As an admin i want to send the forms, so the doctor can use it [#35](https://github.com/AndreisPurim/ISARVIT/issues/35)~~
+	- ~~As an admin i want to have predefined fields models, so the doctor can use standardize data [#36](https://github.com/AndreisPurim/ISARVIT/issues/36)~~
+	- ~~As a radiologist, I want a dedicated page in the web app where I can easily access and view the patient forms, providing a centralized location for managing and reviewing the required information. [#45](https://github.com/AndreisPurim/ISARVIT/issues/45)~~
