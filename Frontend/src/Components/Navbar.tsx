@@ -91,7 +91,7 @@ export default function TitleToolbar(props: { setControl: (arg0: { view: string;
                 <Grid item xs={2} container direction="row" justifyContent="center" alignItems="center" style={{ position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
                     <ButtonBase disableRipple>
                         <Typography component="h2" variant="h5" color="inherit" align="center" onClick={() => props.setView('landing')} >
-                            MC426
+                            ISARVIT
                         </Typography>
                     </ButtonBase>
                 </Grid>

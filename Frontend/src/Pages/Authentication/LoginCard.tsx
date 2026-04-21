@@ -1,4 +1,3 @@
-import axios from "axios";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -8,7 +7,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
-import React, {useEffect} from "react";
+import React from "react";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Visibility from "@mui/icons-material/Visibility";
@@ -21,14 +20,6 @@ export default function LoginCard(props: any) {
 		email: "",
 		password: "",
 	});
-
-	const [isConnecting, setConnection] = React.useState(false);
-
-	useEffect(() => {
-		if (isConnecting) {
-			props.onLogin(user, "login");
-		}
-	}, [isConnecting]);
 
 	const changeEmail = (event: {target: {value: any}}) => {
 		setUser({...user, email: event.target.value});
@@ -55,6 +46,7 @@ export default function LoginCard(props: any) {
 					sx={{pb: "1rem"}}
 					value={user.email}
 					label="Mail"
+					placeholder="andreis@example.com"
 					error={invalidEmail()}
 					helperText={user.email === "" ? null : invalidEmail() ? "Invalid Email" : "Valid Email"}
 					inputProps={{"data-testid": "email"}}
@@ -104,7 +96,7 @@ export default function LoginCard(props: any) {
 					size="medium"
 					variant="outlined"
 					color="primary"
-					onClick={() => setConnection(!isConnecting)}
+					onClick={() => props.onLogin(user, "login")}
 					data-testid="login"
 					sx={{
 						margin: "8px",

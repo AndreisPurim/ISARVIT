@@ -19,7 +19,7 @@ exports[`Footer renders Footer component 1`] = `
     Check our code at 
     <a
       className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1bhi0za-MuiTypography-root-MuiLink-root"
-      href="https://github.com/AndreisPurim/MC426"
+      href="https://github.com/AndreisPurim/ISARVIT"
       onBlur={[Function]}
       onFocus={[Function]}
     >

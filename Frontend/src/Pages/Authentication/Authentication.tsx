@@ -6,7 +6,22 @@ import Container from "@mui/material/Container";
 
 import LoginCard from "./LoginCard.tsx";
 import SignupCard from "./SignupCard.tsx";
-import axios from "axios";
+
+type MockUser = {
+    id: number;
+    username: string;
+    password: string;
+    email?: string;
+    admin: boolean;
+    description: string;
+    joined: string;
+    last_seen: string;
+    avatar: string;
+    chips: {type: string; label: string}[];
+    favorites: number[];
+    recents: {[key: string]: string};
+    created: number[];
+};
 
 export default function Authentication(
     props: JSX.IntrinsicAttributes & {
@@ -24,6 +39,17 @@ export default function Authentication(
         setCard(newValue);
     };
 
+    const usernameFromEmail = (email = "") => email.trim().toLowerCase().split("@")[0];
+
+    const findMockUser = (user: {email?: string; username?: string}) => {
+        const email = user.email?.trim().toLowerCase();
+        const username = (user.username || usernameFromEmail(email)).trim().toLowerCase();
+
+        return Object.values(props.example.users).find((mockUser: any) => {
+            return mockUser.username?.toLowerCase() === username || mockUser.email?.toLowerCase() === email;
+        }) as MockUser | undefined;
+    };
+
     const authenticate = (user: any, auth: "login" | "signup") => {
         switch (auth) {
             case "login":
@@ -35,69 +61,55 @@ export default function Authentication(
         }
     };
 
-    const handleLogin = (user: any, force = false) => {
-        if (force || (user.username == "andreis" && user.password == "noback")) {
-            props.setControl({...props.control, user: props.example.users["andreis"], view: "profile"});
+    const handleLogin = (user: any) => {
+        const mockUser = findMockUser(user);
+        if (mockUser && mockUser.password === user.password) {
+            props.setControl({...props.control, user: mockUser, view: "profile"});
             props.setAlert({open: true, text: "Connected", severity: "success"});
             return;
         }
-        axios({
-            method: "get",
-            url: "http://localhost:8000/users",
-        })
-            .then(function (response) {
-                const userInfo = response.data.filter(function (e: any) {
-                    return e.nome === user.username;
-                })[0];
-                if (userInfo && userInfo.senha === user.password) {
-                    props.setAlert({open: true, text: "Connected", severity: "success"});
-                    // Uses Andreis' profile as a mock example of the profile page.
-                    props.setControl({...props.control, user: props.example.users["andreis"], view: "profile"});
-                } else if (userInfo) {
-                    props.setAlert({open: true, text: "Wrong Password", severity: "error"});
-                } else {
-                    props.setAlert({open: true, text: "User not found", severity: "error"});
-                }
-            })
-            .catch(function (error) {
-                props.setAlert({open: true, text: "Login failed (" + error.name + ")", severity: "error"});
-            });
+
+        props.setAlert({
+            open: true,
+            text: mockUser ? "Wrong Password" : "User not found",
+            severity: "error",
+        });
     };
 
     const handleSignup = (user: any) => {
-        handleLogin(user, true);
-        return;
-        axios({
-            method: "post",
-            url: "http://localhost:8000/users",
-            data: {
-                id: 0,
-                nome: user.username,
-                email: user.email,
-                senha: user.password,
-            },
-        })
-            .then(function (response) {
-                props.setAlert({open: true, text: "Signup Sucessful (ID " + response.data.id + ")", severity: "success"});
-            })
-            .catch(function (error) {
-                props.setAlert({open: true, text: "Signup failed (Server Error)", severity: "error"});
-            });
-        const newUsers = props.example.users;
-        if (user.username in newUsers) {
-            props.setAlert({ open: true, text: "Username already in use", severity: "error" })
+        const username = user.username.trim().toLowerCase();
+        const email = user.email.trim().toLowerCase();
+        const users = props.example.users;
+        const userExists = Boolean(users[username]) || Boolean(findMockUser({email, username}));
+
+        if (userExists) {
+            props.setAlert({open: true, text: "Username or email already in use", severity: "error"});
+            return;
         }
-        else {
-            newUsers[user.username] = {
-                id: Object.keys(newUsers).length, username: user.username, password: user.password, admin: false, description: '', joined: '2022-03-05', last_seen: '2022-02-07', avatar: '',
-                chips: [],
-                favorites: [],
-                recents: [],
-                created: [],
-            };
-            props.setExample({ ...props.example, user: newUsers })
-            props.setAlert({ open: true, text: "Created!", severity: "success" })
-        } 
+
+        const maxID = Math.max(...Object.values(users).map((mockUser: any) => mockUser.id || 0), 0);
+        const newUser: MockUser = {
+            id: maxID + 1,
+            username,
+            email,
+            password: user.password,
+            admin: false,
+            description: "Demo user",
+            joined: new Date().toISOString().slice(0, 10),
+            last_seen: new Date().toISOString().slice(0, 10),
+            avatar: "",
+            chips: [
+                {type: "favorites", label: "0 Favorites"},
+                {type: "created", label: "0 Created"},
+            ],
+            favorites: [],
+            recents: {},
+            created: [],
+        };
+
+        props.setExample({...props.example, users: {...users, [username]: newUser}});
+        props.setControl({...props.control, user: newUser, view: "profile"});
+        props.setAlert({open: true, text: "Created!", severity: "success"});
     };
 
     return (

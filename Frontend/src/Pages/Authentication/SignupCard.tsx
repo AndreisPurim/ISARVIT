@@ -1,16 +1,13 @@
-import axios from "axios";
-import React, {useEffect} from "react";
+import React from "react";
 import Button from "@mui/material/Button";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Card from "@mui/material/Card";
-import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
@@ -43,14 +40,6 @@ export default function SignupCard(props: {
 		showPassword: false,
 		checkPassword: "",
 	} as User);
-
-	const [isConnecting, setConnection] = React.useState(false);
-
-	useEffect(() => {
-		if (isConnecting) {
-			props.onSignup(user, "signup");
-		}
-	}, [isConnecting]);
 
 	const changeProperty = (event: {target: {value: any}}, property: keyof User) => {
 		setUser({...user, [property]: event.target.value});
@@ -152,7 +141,7 @@ export default function SignupCard(props: {
 					color="primary"
 					variant="outlined"
 					data-testid="create"
-					onClick={() => setConnection(!isConnecting)}
+					onClick={() => props.onSignup(user, "signup")}
 					sx={{
 						margin: "8px",
 						justifyContent: "end",

@@ -43,7 +43,7 @@ export default function Creator(props: any){
       setCreator({...creator, card: creator.card-1})
     }
     else{
-      props.setControl({...props.control, view: 'user'})
+      props.setControl({...props.control, view: 'profile'})
     }
   }
   const forward=()=>{

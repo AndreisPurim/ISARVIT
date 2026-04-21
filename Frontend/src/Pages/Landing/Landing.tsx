@@ -44,7 +44,7 @@ function HeaderCard(){
           <LocalHospitalIcon color="secondary" style={{fontSize:'10rem'}}/>
         </div>
         <Typography gutterBottom variant="h5" component="div">
-          MC426 Project 
+          ISARVIT Project 
         </Typography>
         <Typography variant="body2" color="text.secondary">
             Welcome to our medical reports facilitation project! Our mission is to make it easier for healthcare professionals to access and share medical reports across multiple systems. With our user-friendly platform, you can quickly locate and retrieve the necessary information from different providers, improving patient outcomes and enhancing the overall quality of care. We are committed to providing a seamless, secure, and efficient way to manage medical reports.

@@ -26,7 +26,7 @@ import { QrReader } from 'react-qr-reader';
 export default function ReadQRCode(props: any){
   const [data,setData] = React.useState<any>(null);
   const retry=()=>{setData(null)};
-  const back=()=>{props.setView('user')};
+  const back=()=>{props.setView('profile')};
   const use=()=>{
     props.setControl({...props.control, formID: data.answers.formID, tempData: data.answers.answers, view:'form'})
   }
